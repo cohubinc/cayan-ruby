@@ -1,5 +1,6 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "cayan"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'cayan'
 
-require "minitest/autorun"
-require "pry"
+require 'minitest/autorun'
+require 'webmock/test_unit'
+require 'pry'

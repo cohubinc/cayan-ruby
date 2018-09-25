@@ -1,0 +1,15 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <SettleBatchResponse xmlns="http://schemas.merchantwarehouse.com/merchantware/v45/">
+         <SettleBatchResult>
+            <BatchStatus>SUCCESS</BatchStatus>
+            <AuthorizationCode>0314160001</AuthorizationCode>
+            <BatchAmount>2.19</BatchAmount>
+            <TransactionCount>8</TransactionCount>
+            <TransactionDate>3/14/2016 8:28:30 PM</TransactionDate>
+            <ErrorMessage/>
+            <ExtraData/>
+         </SettleBatchResult>
+      </SettleBatchResponse>
+   </soap:Body>
+</soap:Envelope>

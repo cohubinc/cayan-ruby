@@ -1,0 +1,24 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <ForceCaptureResponse xmlns="http://schemas.merchantwarehouse.com/merchantware/v45/">
+         <ForceCaptureResult>
+            <ApprovalStatus>APPROVED</ApprovalStatus>
+            <Token>608962</Token>
+            <AuthorizationCode>V00546C</AuthorizationCode>
+            <TransactionDate>3/14/2016 8:11:01 PM</TransactionDate>
+            <Amount>3.06</Amount>
+            <RemainingCardBalance/>
+            <CardNumber>************0026</CardNumber>
+            <Cardholder>John Doe</Cardholder>
+            <CardType>4</CardType>
+            <FsaCard/>
+            <ReaderEntryMode>1</ReaderEntryMode>
+            <AvsResponse/>
+            <CvResponse/>
+            <ErrorMessage/>
+            <ExtraData/>
+            <Rfmiq>10000ABCDE</Rfmiq>
+         </ForceCaptureResult>
+      </ForceCaptureResponse>
+   </soap:Body>
+</soap:Envelope>
