@@ -1,8 +1,6 @@
 # Cayan
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cayan`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A Ruby gem for talking to the Cayan Merchantware API
 
 ## Installation
 
@@ -14,15 +12,39 @@ gem 'cayan'
 
 And then execute:
 
-    $ bundle
+```shell
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install cayan
+```shell
+$ gem install cayan
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+@client = Cayan::Merchantware::Client.new(
+  merchant_name: 'Zero Inc',
+  merchant_site_id: '00000000',
+  merchant_key: '00000-00000-00000-00000-00000'
+)
+
+result = @client.board_card(payment_data: {
+  source: 'Keyed',
+  card_number: '4012000033330026',
+  expiration_date: '1218',
+  card_holder: 'John Doe',
+  avs_street_address: '1 Federal Street',
+  avs_zip_code: '02110'
+})
+```
+
+All Credit transactions are supported. Check and GiftCard transactions coming soon.
+[Cayan Merchantware API Docs](https://cayan.com/developers/merchantware/merchantware-4-5/credit)
+
+##
 
 ## Development
 
@@ -32,4 +54,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cayan.
+Bug reports and pull requests are welcome on GitHub at https://github.com/BitPerformanceLabs/cayan.
