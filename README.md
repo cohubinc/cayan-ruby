@@ -2,6 +2,8 @@
 
 A Ruby gem for talking to the Cayan Merchantware API
 
+[![Build Status](https://travis-ci.com/cohubinc/cayan-ruby.svg?branch=master)](https://travis-ci.com/cohubinc/cayan-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
