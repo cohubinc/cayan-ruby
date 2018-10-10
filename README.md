@@ -25,7 +25,7 @@ $ gem install cayan
 ## Usage
 
 ```ruby
-@client = Cayan::Merchantware::Client.new(
+@client = Cayan::Merchantware::Credit::Client.new(
   merchant_name: 'Zero Inc',
   merchant_site_id: '00000000',
   merchant_key: '00000-00000-00000-00000-00000'

@@ -1,6 +1,6 @@
-require 'cayan/merchantware/client'
+require 'cayan/merchantware/credit/client'
 
-module Cayan
-  module Merchantware
-  end
-end
+# module Cayan
+#   module Merchantware
+#   end
+# end
