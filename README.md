@@ -3,6 +3,7 @@
 A Ruby gem for talking to the Cayan Merchantware API
 
 [![Build Status](https://travis-ci.com/cohubinc/cayan-ruby.svg?branch=master)](https://travis-ci.com/cohubinc/cayan-ruby)
+[![Coverage Status](https://coveralls.io/repos/github/cohubinc/cayan-ruby/badge.svg?branch=master)](https://coveralls.io/github/cohubinc/cayan-ruby?branch=master)
 
 ## Installation
 
