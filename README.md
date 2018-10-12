@@ -28,7 +28,20 @@ $ gem install cayan
 ## Merchantware Credit Usage
 
 - [Initialize a Merchantware Credit Client](#initialize-a-merchantware-credit-client)
-- [AdjustTip](#adjust-tip)
+- [AdjustTip](#adjusttip)
+- [AttachSignature](#attachsignature)
+- [Authorize](#authorize)
+- [BoardCard](#boardcard)
+- [Capture](#capture)
+- [Capture](#capture)
+- [FindBoardedCard](#findboardedcard)
+- [UpdateBoardedCard](#updatedboardedcard)
+- [ForceCapture](#forcecapture)
+- [Refund](#refund)
+- [Sale](#sale)
+- [SettleBatch](#settlebatch)
+- [UnboardCard](#unboardcard)
+- [Void](#void)
 
 ### Initialize a Merchantware Credit Client
 
