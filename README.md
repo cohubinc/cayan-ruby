@@ -33,7 +33,6 @@ $ gem install cayan
 - [Authorize](#authorize)
 - [BoardCard](#boardcard)
 - [Capture](#capture)
-- [Capture](#capture)
 - [FindBoardedCard](#findboardedcard)
 - [UpdateBoardedCard](#updatedboardedcard)
 - [ForceCapture](#forcecapture)
