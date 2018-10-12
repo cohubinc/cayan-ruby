@@ -28,13 +28,13 @@ $ gem install cayan
 ## Usage
 
 ```ruby
-@client = Cayan::Merchantware::Credit::Client.new(
+@client = Cayan::Merchantware::Credit::Client.new({
   merchant_name: 'Zero Inc',
   merchant_site_id: '00000000',
   merchant_key: '00000-00000-00000-00000-00000'
-)
+})
 
-result = @client.board_card(payment_data: {
+result = @client.board_card({
   source: 'Keyed',
   card_number: '4012000033330026',
   expiration_date: '1218',
