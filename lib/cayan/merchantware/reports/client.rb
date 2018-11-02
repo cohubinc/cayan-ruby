@@ -11,7 +11,7 @@ module Cayan
           @credentials = credentials
           @client = Savon.client(
             wsdl: 'https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx?WSDL',
-            convert_request_keys_to: :camelcase
+            convert_request_keys_to: :lower_camelcase
           )
         end
 

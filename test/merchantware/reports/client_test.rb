@@ -27,7 +27,7 @@ module Merchantware
 
       def test_current_batch_summary
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:CurrentBatchSummary><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:CardHolderFilter>JANE DOE</tns:CardHolderFilter><tns:CardType>0</tns:CardType></tns:CurrentBatchSummary></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:CurrentBatchSummary><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:cardHolderFilter>JANE DOE</tns:cardHolderFilter><tns:cardType>0</tns:cardType></tns:CurrentBatchSummary></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/current_batch_summary.xml"))
 
         result = @client.current_batch_summary({
@@ -42,7 +42,7 @@ module Merchantware
 
       def test_current_batch_transactions
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:CurrentBatchTransactions><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:CurrentBatchTransactions></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:CurrentBatchTransactions><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey></tns:CurrentBatchTransactions></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/current_batch_transactions.xml"))
         
         result = @client.current_batch_transactions
@@ -52,7 +52,7 @@ module Merchantware
 
       def test_summary_by_date
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:SummaryByDate><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:StartDate>2017-12-01T05:00:00</tns:StartDate><tns:EndDate>2017-12-31T05:00:00</tns:EndDate><tns:CardholderFilter>REWARDS</tns:CardholderFilter><tns:CardType>0</tns:CardType></tns:SummaryByDate></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:SummaryByDate><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:startDate>2017-12-01T05:00:00</tns:startDate><tns:endDate>2017-12-31T05:00:00</tns:endDate><tns:cardholderFilter>REWARDS</tns:cardholderFilter><tns:cardType>0</tns:cardType></tns:SummaryByDate></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/summary_by_date.xml"))
         
         result = @client.summary_by_date({
@@ -69,7 +69,7 @@ module Merchantware
 
       def test_transactions_by_date
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:TransactionsByDate><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:StartDate>2008-05-01T01:00:00</tns:StartDate><tns:EndDate>2008-06-01T13:00:00</tns:EndDate><tns:InvoiceNumber>1000</tns:InvoiceNumber><tns:RegisterNumber></tns:RegisterNumber><tns:AuthorizationCode></tns:AuthorizationCode></tns:TransactionsByDate></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:TransactionsByDate><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:startDate>2008-05-01T01:00:00</tns:startDate><tns:endDate>2008-06-01T13:00:00</tns:endDate><tns:invoiceNumber>1000</tns:invoiceNumber><tns:registerNumber></tns:registerNumber><tns:authorizationCode></tns:authorizationCode></tns:TransactionsByDate></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/transactions_by_date.xml"))
         
         result = @client.transactions_by_date({
@@ -88,7 +88,7 @@ module Merchantware
 
       def test_transactions_by_reference
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:TransactionsByDate><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:Token>375814</tns:Token></tns:TransactionsByDate></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:TransactionsByDate><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:token>375814</tns:token></tns:TransactionsByDate></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/transactions_by_reference.xml"))
         
         result = @client.transactions_by_reference({
@@ -101,7 +101,7 @@ module Merchantware
 
       def test_transactions_by_transaction_id
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:DetailedTransactionByTransactionId><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:MerchantTransactionId>448254125</tns:MerchantTransactionId></tns:DetailedTransactionByTransactionId></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:DetailedTransactionByTransactionId><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:merchantTransactionId>448254125</tns:merchantTransactionId></tns:DetailedTransactionByTransactionId></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/transactions_by_transaction_id.xml"))
         
         result = @client.transactions_by_transaction_id("448254125")
@@ -112,7 +112,7 @@ module Merchantware
 
       def test_detailed_transaction_by_reference
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:DetailedTransactionByReference><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:Token>375814</tns:Token></tns:DetailedTransactionByReference></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:DetailedTransactionByReference><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:token>375814</tns:token></tns:DetailedTransactionByReference></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/detailed_transaction_by_reference.xml"))
 
         result = @client.detailed_transaction_by_reference({
@@ -125,7 +125,7 @@ module Merchantware
 
       def test_detailed_transaction_by_transaction_id
         stub_request(:post, "https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx")
-          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:DetailedTransactionByTransactionId><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey><tns:MerchantTransactionId>DEV101</tns:MerchantTransactionId></tns:DetailedTransactionByTransactionId></env:Body></env:Envelope>")
+          .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/40/Reports/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:DetailedTransactionByTransactionId><tns:merchantName>Zero Inc</tns:merchantName><tns:merchantSiteId>00000000</tns:merchantSiteId><tns:merchantKey>00000-00000-00000-00000-00000</tns:merchantKey><tns:merchantTransactionId>DEV101</tns:merchantTransactionId></tns:DetailedTransactionByTransactionId></env:Body></env:Envelope>")
           .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/reports/detailed_transaction_by_transaction_id.xml"))
         
         result = @client.detailed_transaction_by_transaction_id("DEV101")
