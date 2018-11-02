@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <TransactionsByDateResponse
+     xmlns="http://schemas.merchantwarehouse.com/merchantware/40/Reports/">
+      <TransactionsByDateResult>
+        <TransactionReference4>
+          <Token>302856</Token>
+          <InvoiceNumber>10002</InvoiceNumber>
+          <TransactionDate>2008-05-09 20:29:52.747</TransactionDate>
+          <ApprovalStatus>APPROVED</ApprovalStatus>
+          <Cardholder>VISA TEST CARD</Cardholder>
+          <Amount>1.02</Amount>
+          <Type>3</Type>
+          <CardNumber>************0019</CardNumber>
+          <CardType>4</CardType>
+          <AuthorizationCode>14087</AuthorizationCode>
+          <MerchantTransactionId>DEV101</MerchantTransactionId>
+          <BatchNumber>159</BatchNumber>
+        </TransactionReference4>
+        <TransactionReference4>
+          <Token>302855</Token>
+          <InvoiceNumber>10001</InvoiceNumber>
+          <TransactionDate>2008-05-09 20:29:49.123</TransactionDate>
+          <ApprovalStatus>APPROVED</ApprovalStatus>
+          <Cardholder>MASTERCARD TEST CARD</Cardholder>
+          <Amount>1.01</Amount>
+          <Type>1</Type>
+          <CardNumber>************3003</CardNumber>
+          <CardType>3</CardType>
+          <AuthorizationCode>14088</AuthorizationCode>
+          <MerchantTransactionId>DEV102</MerchantTransactionId>
+          <BatchNumber>159</BatchNumber>
+        </TransactionReference4>
+      </TransactionsByDateResult>
+    </TransactionsByDateResponse>
+  </soap:Body>
+</soap:Envelope>

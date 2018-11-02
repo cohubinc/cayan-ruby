@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <CurrentBatchSummaryResponse xmlns="http://schemas.merchantwarehouse.com/merchantware/40/Reports/">
+      <CurrentBatchSummaryResult>
+        <TransactionSummary4>
+          <Cardholder>JANE DOE/CHASE AIRMILES PLUS</Cardholder>
+          <SaleAmount>5.60</SaleAmount>
+          <SaleCount>2</SaleCount>
+          <RefundAmount>0.00</RefundAmount>
+          <RefundCount>0</RefundCount>
+          <NetAmount>5.60</NetAmount>
+          <TotalTransactions>2</TotalTransactions>
+          <CardType>3</CardType>
+        </TransactionSummary4>
+        <TransactionSummary4>
+          <Cardholder>JANE DOE/AMERICAN EXPRESS</Cardholder>
+          <SaleAmount>8.00</SaleAmount>
+          <SaleCount>1</SaleCount>
+          <RefundAmount>8.00</RefundAmount>
+          <RefundCount>1</RefundCount>
+          <NetAmount>0.00</NetAmount>
+          <TotalTransactions>2</TotalTransactions>
+          <CardType>1</CardType>
+        </TransactionSummary4>
+      </CurrentBatchSummaryResult>
+    </CurrentBatchSummaryResponse>
+  </soap:Body>
+</soap:Envelope>

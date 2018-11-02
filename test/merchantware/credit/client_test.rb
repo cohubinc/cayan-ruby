@@ -10,7 +10,7 @@ module Merchantware
       
       def setup
         stub_request(:get, WSDL_URL).
-          to_return(status: 200, body: File.read("test/fixtures/merchantware.wsdl"))
+          to_return(status: 200, body: File.read("test/fixtures/merchantware/credit.wsdl"))
 
         @client = Cayan::Merchantware::Credit::Client.new({
           merchant_name: 'Zero Inc',
@@ -28,7 +28,7 @@ module Merchantware
       def test_board_card
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:BoardCard><tns:PaymentData><tns:Source>Keyed</tns:Source><tns:CardNumber>4012000033330026</tns:CardNumber><tns:ExpirationDate>1218</tns:ExpirationDate><tns:CardHolder>John Doe</tns:CardHolder><tns:AvsStreetAddress>1 Federal Street</tns:AvsStreetAddress><tns:AvsZipCode>02110</tns:AvsZipCode></tns:PaymentData><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:BoardCard></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/board_card.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/board_card.xml"))
         
         result = @client.board_card({
           source: 'Keyed',
@@ -47,7 +47,7 @@ module Merchantware
       def test_find_boarded_card
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:FindBoardedCard><tns:Request><tns:VaultToken>127MMEIIQVEW2WSZECPL</tns:VaultToken></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:FindBoardedCard></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/find_boarded_card.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/find_boarded_card.xml"))
         
         result = @client.find_boarded_card({ vault_token: '127MMEIIQVEW2WSZECPL' })
         
@@ -61,7 +61,7 @@ module Merchantware
       def test_adjust_tip
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:AdjustTip><tns:Request><tns:Token>1236559</tns:Token><tns:Amount>1.00</tns:Amount></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:AdjustTip></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/adjust_tip.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/adjust_tip.xml"))
         
         result = @client.adjust_tip({ token: '1236559', amount: '1.00' })
 
@@ -73,7 +73,7 @@ module Merchantware
       def test_attach_signature
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:AttachSignature><tns:Request><tns:Token>608957</tns:Token><tns:VectorImageData>10,10^110,110^0,65535^10,110^110,10^0,65535^~</tns:VectorImageData></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:AttachSignature></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/attach_signature.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/attach_signature.xml"))
         
         result = @client.attach_signature({ token: '608957', vector_image_data: '10,10^110,110^0,65535^10,110^110,10^0,65535^~' })
 
@@ -85,7 +85,7 @@ module Merchantware
       def test_authorize
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:Authorize><tns:PaymentData><tns:Source>Keyed</tns:Source><tns:CardNumber>4012000033330026</tns:CardNumber><tns:ExpirationDate>1218</tns:ExpirationDate><tns:CardHolder>John Doe</tns:CardHolder><tns:AvsStreetAddress>1 Federal Street</tns:AvsStreetAddress><tns:AvsZipCode>02110</tns:AvsZipCode><tns:CardVerificationValue>123</tns:CardVerificationValue></tns:PaymentData><tns:Request><tns:Amount>1.05</tns:Amount><tns:InvoiceNumber>1556</tns:InvoiceNumber><tns:RegisterNumber>35</tns:RegisterNumber><tns:MerchantTransactionId>167901</tns:MerchantTransactionId><tns:CardAcceptorTerminalId>3</tns:CardAcceptorTerminalId></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:Authorize></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/authorize.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/authorize.xml"))
         
         result = @client.authorize({
             source: 'Keyed',
@@ -119,7 +119,7 @@ module Merchantware
       def test_capture
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:Capture><tns:Request><tns:Token>608939</tns:Token><tns:Amount>1.5</tns:Amount><tns:InvoiceNumber>1556</tns:InvoiceNumber><tns:RegisterNumber>35</tns:RegisterNumber><tns:MerchantTransactionId>167902</tns:MerchantTransactionId><tns:CardAcceptorTerminalId>3</tns:CardAcceptorTerminalId></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:Capture></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/capture.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/capture.xml"))
         
         result = @client.capture({
           token: '608939',
@@ -140,7 +140,7 @@ module Merchantware
       def test_update_boarded_card
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:UpdateBoardedCard><tns:Request><tns:Token>127MMEIIQVEW2WSZECPL</tns:Token><tns:ExpirationDate>0118</tns:ExpirationDate></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:UpdateBoardedCard></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/update_boarded_card.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/update_boarded_card.xml"))
         
         result = @client.update_boarded_card({
           token: '127MMEIIQVEW2WSZECPL',
@@ -153,7 +153,7 @@ module Merchantware
       def test_force_capture
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:ForceCapture><tns:PaymentData><tns:Source>Keyed</tns:Source><tns:CardNumber>4012000033330026</tns:CardNumber><tns:ExpirationDate>1218</tns:ExpirationDate><tns:CardHolder>John Doe</tns:CardHolder></tns:PaymentData><tns:Request><tns:Amount>3.06</tns:Amount><tns:AuthorizationCode>V00546C</tns:AuthorizationCode><tns:InvoiceNumber>1559</tns:InvoiceNumber><tns:RegisterNumber>35</tns:RegisterNumber><tns:MerchantTransactionId>168901</tns:MerchantTransactionId><tns:CardAcceptorTerminalId>3</tns:CardAcceptorTerminalId><tns:EcommerceTransactionIndicator xsi:nil=\"true\"/></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:ForceCapture></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/force_capture.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/force_capture.xml"))
         
         result = @client.force_capture(
           {
@@ -185,7 +185,7 @@ module Merchantware
       def test_refund
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:Refund><tns:PaymentData><tns:Source>Keyed</tns:Source><tns:CardNumber>4012000033330026</tns:CardNumber><tns:ExpirationDate>1218</tns:ExpirationDate><tns:CardHolder>John Doe</tns:CardHolder></tns:PaymentData><tns:Request><tns:Amount>4.01</tns:Amount><tns:InvoiceNumber>1701</tns:InvoiceNumber><tns:RegisterNumber>35</tns:RegisterNumber><tns:MerchantTransactionId>165901</tns:MerchantTransactionId><tns:CardAcceptorTerminalId>3</tns:CardAcceptorTerminalId><tns:EcommerceTransactionIndicator xsi:nil=\"true\"/></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:Refund></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/refund.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/refund.xml"))
 
         result = @client.refund(
           {
@@ -215,7 +215,7 @@ module Merchantware
       def test_sale
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:Sale><tns:PaymentData><tns:Source>Keyed</tns:Source><tns:CardNumber>4012000033330026</tns:CardNumber><tns:ExpirationDate>1218</tns:ExpirationDate><tns:CardHolder>John Doe</tns:CardHolder><tns:AvsStreetAddress>1 Federal Street</tns:AvsStreetAddress><tns:AvsZipCode>02110</tns:AvsZipCode><tns:CardVerificationValue>123</tns:CardVerificationValue></tns:PaymentData><tns:Request><tns:Amount>1.05</tns:Amount><tns:CashbackAmount>0.00</tns:CashbackAmount><tns:SurchargeAmount>0.00</tns:SurchargeAmount><tns:TaxAmount>0.00</tns:TaxAmount><tns:InvoiceNumber>1556</tns:InvoiceNumber><tns:PurchaseOrderNumber>17801</tns:PurchaseOrderNumber><tns:CustomerCode>20</tns:CustomerCode><tns:RegisterNumber>35</tns:RegisterNumber><tns:MerchantTransactionId>166901</tns:MerchantTransactionId><tns:CardAcceptorTerminalId>3</tns:CardAcceptorTerminalId><tns:EnablePartialAuthorization>False</tns:EnablePartialAuthorization><tns:ForceDuplicate>False</tns:ForceDuplicate><tns:EcommerceTransactionIndicator xsi:nil=\"true\"/></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:Sale></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/sale.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/sale.xml"))
 
         result = @client.sale(
           {
@@ -257,7 +257,7 @@ module Merchantware
       def test_settle_batch
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:SettleBatch><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:SettleBatch></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/settle_batch.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/settle_batch.xml"))
 
         result = @client.settle_batch
 
@@ -271,7 +271,7 @@ module Merchantware
       def test_unboard_card
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:UnboardCard><tns:Request><tns:VaultToken>MYTOKENVALUEX</tns:VaultToken></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:UnboardCard></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/unboard_card.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/unboard_card.xml"))
         
         result = @client.unboard_card({ vault_token: "MYTOKENVALUEX" })
 
@@ -283,7 +283,7 @@ module Merchantware
       def test_void
         stub_request(:post, SERVICE_ENDPOINT)
           .with(body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:tns=\"http://schemas.merchantwarehouse.com/merchantware/v45/\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Body><tns:Void><tns:Request><tns:Token>608973</tns:Token><tns:RegisterNumber>35</tns:RegisterNumber><tns:MerchantTransactionId>167901</tns:MerchantTransactionId><tns:CardAcceptorTerminalId>3</tns:CardAcceptorTerminalId></tns:Request><tns:Credentials><tns:MerchantName>Zero Inc</tns:MerchantName><tns:MerchantSiteId>00000000</tns:MerchantSiteId><tns:MerchantKey>00000-00000-00000-00000-00000</tns:MerchantKey></tns:Credentials></tns:Void></env:Body></env:Envelope>")
-          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/void.xml"))
+          .to_return(status: 200, body: File.read("test/fixtures/merchantware/responses/credit/void.xml"))
         
         result = @client.void({ token: "608973", register_number: '35', merchant_transaction_id: '167901', card_acceptor_terminal_id: '3' })
 
