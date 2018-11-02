@@ -1,0 +1,821 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://schemas.merchantwarehouse.com/merchantware/40/Reports/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://schemas.merchantwarehouse.com/merchantware/40/Reports/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.merchantwarehouse.com/merchantware/40/Reports/">
+      <s:element name="TransactionsByReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactionsByReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionsByReferenceResult" type="tns:ArrayOfTransactionReference4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTransactionReference4">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TransactionReference4" nillable="true" type="tns:TransactionReference4" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TransactionReference4">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovalStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cardholder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BatchNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EbtBasisType" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="TransactionsByTransactionId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantTransactionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactionsByTransactionIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionsByTransactionIdResult" type="tns:ArrayOfTransactionReference4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactionsByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="invoiceNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="registerNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="authorizationCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TransactionsByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionsByDateResult" type="tns:ArrayOfTransactionReference4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SummaryByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardHolderFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cardType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SummaryByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SummaryByDateResult" type="tns:ArrayOfTransactionSummary4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTransactionSummary4">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TransactionSummary4" nillable="true" type="tns:TransactionSummary4" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TransactionSummary4">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cardholder" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefundAmount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RefundCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaleAmount" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaleCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalTransactions" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CurrentBatchTransactions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentBatchTransactionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrentBatchTransactionsResult" type="tns:ArrayOfTransactionReference4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentBatchSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardholderFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cardType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentBatchSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrentBatchSummaryResult" type="tns:ArrayOfTransactionSummary4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetailedTransactionByReference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetailedTransactionByReferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DetailedTransactionByReferenceResult" type="tns:DetailedTransactionReference4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetailedTransactionReference4">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApprovalStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AvsResponse" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BatchNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cardholder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CashBackAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConvenienceAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CvvResponse" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpirationDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HostReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InvoiceNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCardNumberKeyed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTransactionAdjusted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTransactionCaptured" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTransactionVoided" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTransactionSettled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MerchantTransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginalToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PurchaseOrderNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegisterNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupportedActions" type="tns:SupportedActions" />
+          <s:element minOccurs="0" maxOccurs="1" name="SurchargeAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaxAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HealthCareAmounts" type="tns:HealthCareAmounts" />
+          <s:element minOccurs="0" maxOccurs="1" name="Emv" type="tns:Emv" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntryMode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FsaCard" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FraudScoring" type="tns:FraudScoring" />
+          <s:element minOccurs="0" maxOccurs="1" name="EbtBasisType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rfmiq" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Invoice" type="tns:Invoice" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MultipleClearing" type="tns:MultipleClearing" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SupportedActions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AdjustmentToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaptureToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailReceiptToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefundMaxAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefundToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RepeatSaleToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VoidToken" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HealthCareAmounts">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CopayAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClinicalAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DentalAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HealthCareTotalAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrescriptionAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VisionAmount" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Emv">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationInformation" type="tns:ApplicationInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardInformation" type="tns:CardInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationCryptogram" type="tns:ApplicationCryptogram" />
+          <s:element minOccurs="0" maxOccurs="1" name="CvmResults" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssuerApplicationData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalVerificationResults" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnpredictableNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="tns:Amount" />
+          <s:element minOccurs="0" maxOccurs="1" name="PosEntryMode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalInformation" type="tns:TerminalInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionInformation" type="tns:TransactionInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="CryptogramInformationData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PinStatement" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CvmMethod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssuerActionCodeDefault" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssuerActionCodeDenial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IssuerActionCodeOnline" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationResponseCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Aid" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationExpiryDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationEffectiveDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationInterchangeProfile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationVersionNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationTransactionCounter" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationUsageControl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationPreferredName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationDisplayName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CardInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MaskedPan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PanSequenceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardExpiryDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ApplicationCryptogram">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CryptogramType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cryptogram" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Amount">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AmountAuthorized" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AmountOther" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TerminalInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TerminalType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IfdSerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalCountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalActionCodeDefault" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalActionCodeDenial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalActionCodeOnline" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TransactionInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionCurrencyCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionStatusInformation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FraudScoring">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExternalReference" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Recommendation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Score" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Invoice">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TaxIndicator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DutyAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationPostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DestinationCountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipFromPostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlternateTaxAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlternateTaxRate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LineItems" type="tns:ArrayOfLineItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItem" nillable="true" type="tns:LineItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LineItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CommodityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Upc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Quantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitOfMeasure" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitCost" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscountAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaxAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExtendedAmount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DebitOrCreditIndicator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NetOrGrossIndicator" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MultipleClearing">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SequenceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SequenceCount" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DetailedTransactionByTransactionId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="merchantName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantSiteId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="merchantTransactionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetailedTransactionByTransactionIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DetailedTransactionByTransactionIdResult" type="tns:DetailedTransactionReference4" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfTransactionReference4" nillable="true" type="tns:ArrayOfTransactionReference4" />
+      <s:element name="ArrayOfTransactionSummary4" nillable="true" type="tns:ArrayOfTransactionSummary4" />
+      <s:element name="DetailedTransactionReference4" nillable="true" type="tns:DetailedTransactionReference4" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="TransactionsByReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:TransactionsByReference" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:TransactionsByReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByTransactionIdSoapIn">
+    <wsdl:part name="parameters" element="tns:TransactionsByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByTransactionIdSoapOut">
+    <wsdl:part name="parameters" element="tns:TransactionsByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:TransactionsByDate" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:TransactionsByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SummaryByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:SummaryByDate" />
+  </wsdl:message>
+  <wsdl:message name="SummaryByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:SummaryByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchTransactionsSoapIn">
+    <wsdl:part name="parameters" element="tns:CurrentBatchTransactions" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchTransactionsSoapOut">
+    <wsdl:part name="parameters" element="tns:CurrentBatchTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:CurrentBatchSummary" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:CurrentBatchSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByReferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:DetailedTransactionByReference" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByReferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:DetailedTransactionByReferenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByTransactionIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DetailedTransactionByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByTransactionIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DetailedTransactionByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByReferenceHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByReferenceHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTransactionReference4" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByTransactionIdHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="merchantTransactionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByTransactionIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTransactionReference4" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByDateHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="startDate" type="s:string" />
+    <wsdl:part name="endDate" type="s:string" />
+    <wsdl:part name="invoiceNumber" type="s:string" />
+    <wsdl:part name="registerNumber" type="s:string" />
+    <wsdl:part name="authorizationCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TransactionsByDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTransactionReference4" />
+  </wsdl:message>
+  <wsdl:message name="SummaryByDateHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="startDate" type="s:string" />
+    <wsdl:part name="endDate" type="s:string" />
+    <wsdl:part name="cardHolderFilter" type="s:string" />
+    <wsdl:part name="cardType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SummaryByDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTransactionSummary4" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchTransactionsHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchTransactionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTransactionReference4" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchSummaryHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="cardholderFilter" type="s:string" />
+    <wsdl:part name="cardType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CurrentBatchSummaryHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfTransactionSummary4" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByReferenceHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="token" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByReferenceHttpPostOut">
+    <wsdl:part name="Body" element="tns:DetailedTransactionReference4" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByTransactionIdHttpPostIn">
+    <wsdl:part name="merchantName" type="s:string" />
+    <wsdl:part name="merchantSiteId" type="s:string" />
+    <wsdl:part name="merchantKey" type="s:string" />
+    <wsdl:part name="merchantTransactionId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DetailedTransactionByTransactionIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:DetailedTransactionReference4" />
+  </wsdl:message>
+  <wsdl:portType name="ReportingSoap">
+    <wsdl:operation name="TransactionsByReference">
+      <wsdl:input message="tns:TransactionsByReferenceSoapIn" />
+      <wsdl:output message="tns:TransactionsByReferenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByTransactionId">
+      <wsdl:input message="tns:TransactionsByTransactionIdSoapIn" />
+      <wsdl:output message="tns:TransactionsByTransactionIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByDate">
+      <wsdl:input message="tns:TransactionsByDateSoapIn" />
+      <wsdl:output message="tns:TransactionsByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SummaryByDate">
+      <wsdl:input message="tns:SummaryByDateSoapIn" />
+      <wsdl:output message="tns:SummaryByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchTransactions">
+      <wsdl:input message="tns:CurrentBatchTransactionsSoapIn" />
+      <wsdl:output message="tns:CurrentBatchTransactionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchSummary">
+      <wsdl:input message="tns:CurrentBatchSummarySoapIn" />
+      <wsdl:output message="tns:CurrentBatchSummarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByReference">
+      <wsdl:input message="tns:DetailedTransactionByReferenceSoapIn" />
+      <wsdl:output message="tns:DetailedTransactionByReferenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByTransactionId">
+      <wsdl:input message="tns:DetailedTransactionByTransactionIdSoapIn" />
+      <wsdl:output message="tns:DetailedTransactionByTransactionIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ReportingHttpPost">
+    <wsdl:operation name="TransactionsByReference">
+      <wsdl:input message="tns:TransactionsByReferenceHttpPostIn" />
+      <wsdl:output message="tns:TransactionsByReferenceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByTransactionId">
+      <wsdl:input message="tns:TransactionsByTransactionIdHttpPostIn" />
+      <wsdl:output message="tns:TransactionsByTransactionIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByDate">
+      <wsdl:input message="tns:TransactionsByDateHttpPostIn" />
+      <wsdl:output message="tns:TransactionsByDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SummaryByDate">
+      <wsdl:input message="tns:SummaryByDateHttpPostIn" />
+      <wsdl:output message="tns:SummaryByDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchTransactions">
+      <wsdl:input message="tns:CurrentBatchTransactionsHttpPostIn" />
+      <wsdl:output message="tns:CurrentBatchTransactionsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchSummary">
+      <wsdl:input message="tns:CurrentBatchSummaryHttpPostIn" />
+      <wsdl:output message="tns:CurrentBatchSummaryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByReference">
+      <wsdl:input message="tns:DetailedTransactionByReferenceHttpPostIn" />
+      <wsdl:output message="tns:DetailedTransactionByReferenceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByTransactionId">
+      <wsdl:input message="tns:DetailedTransactionByTransactionIdHttpPostIn" />
+      <wsdl:output message="tns:DetailedTransactionByTransactionIdHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReportingSoap" type="tns:ReportingSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TransactionsByReference">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/TransactionsByReference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByTransactionId">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/TransactionsByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByDate">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/TransactionsByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SummaryByDate">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/SummaryByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchTransactions">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/CurrentBatchTransactions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchSummary">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/CurrentBatchSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByReference">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/DetailedTransactionByReference" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByTransactionId">
+      <soap:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/DetailedTransactionByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReportingSoap12" type="tns:ReportingSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TransactionsByReference">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/TransactionsByReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByTransactionId">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/TransactionsByTransactionId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByDate">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/TransactionsByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SummaryByDate">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/SummaryByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchTransactions">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/CurrentBatchTransactions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchSummary">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/CurrentBatchSummary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByReference">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/DetailedTransactionByReference" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByTransactionId">
+      <soap12:operation soapAction="http://schemas.merchantwarehouse.com/merchantware/40/Reports/DetailedTransactionByTransactionId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReportingHttpPost" type="tns:ReportingHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="TransactionsByReference">
+      <http:operation location="/TransactionsByReference" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByTransactionId">
+      <http:operation location="/TransactionsByTransactionId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TransactionsByDate">
+      <http:operation location="/TransactionsByDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SummaryByDate">
+      <http:operation location="/SummaryByDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchTransactions">
+      <http:operation location="/CurrentBatchTransactions" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentBatchSummary">
+      <http:operation location="/CurrentBatchSummary" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByReference">
+      <http:operation location="/DetailedTransactionByReference" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailedTransactionByTransactionId">
+      <http:operation location="/DetailedTransactionByTransactionId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Reporting">
+    <wsdl:port name="ReportingSoap" binding="tns:ReportingSoap">
+      <soap:address location="https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReportingSoap12" binding="tns:ReportingSoap12">
+      <soap12:address location="https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReportingHttpPost" binding="tns:ReportingHttpPost">
+      <http:address location="https://ps1.merchantware.net/Merchantware/ws/TransactionHistory/v4/Reporting.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

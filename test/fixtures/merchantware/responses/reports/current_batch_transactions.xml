@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <CurrentBatchTransactionsResponse xmlns="http://schemas.merchantwarehouse.com/merchantware/40/Reports/">
+      <CurrentBatchTransactionsResult>
+        <TransactionReference4>
+          <Token>2980983</Token>
+          <InvoiceNumber>s90103</InvoiceNumber>
+          <TransactionDate>2008-01-03 15:03:01.158</TransactionDate>
+          <ApprovalStatus>APPROVED</ApprovalStatus>
+          <Cardholder>JOHN DOE/CAPITALONE</Cardholder>
+          <Amount>13.56</Amount>
+          <Type>1</Type>
+          <CardNumber>************1160</CardNumber>
+          <CardType>4</CardType>
+          <AuthorizationCode>14087</AuthorizationCode>
+          <MerchantTransactionId>DEV101</MerchantTransactionId>
+          <BatchNumber>159</BatchNumber>
+        </TransactionReference4>
+        <TransactionReference4>
+          <Token>2980989</Token>
+          <InvoiceNumber>r90103</InvoiceNumber>
+          <TransactionDate>2008-01-03 15:06:35.981</TransactionDate>
+          <ApprovalStatus>APPROVED</ApprovalStatus>
+          <Cardholder>JANE DOE/CAPITALONE</Cardholder>
+          <Amount>13.56</Amount>
+          <Type>2</Type>
+          <CardNumber>************9896</CardNumber>
+          <CardType>4</CardType>
+          <AuthorizationCode>14088</AuthorizationCode>
+          <MerchantTransactionId>DEV102</MerchantTransactionId>
+          <BatchNumber>159</BatchNumber>
+        </TransactionReference4>
+      </CurrentBatchTransactionsResult>
+    </CurrentBatchTransactionsResponse>
+  </soap:Body>
+</soap:Envelope>

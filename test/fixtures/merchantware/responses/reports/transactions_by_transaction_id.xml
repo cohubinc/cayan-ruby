@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <TransactionsByTransactionIdResponse
+     xmlns="http://schemas.merchantwarehouse.com/merchantware/40/Reports/">
+      <TransactionsByTransactionIdResult>
+        <TransactionReference4>
+          <Amount>1.06</Amount>
+          <ApprovalStatus>DECLINED</ApprovalStatus>
+          <AuthorizationCode>14087</AuthorizationCode>
+          <Cardholder>John Doe</Cardholder>
+          <CardNumber>************1117</CardNumber>
+          <CardType>2</CardType>
+          <ErrorMessage></ErrorMessage>
+          <InvoiceNumber>9980</InvoiceNumber>
+          <MerchantTransactionId>448254125</MerchantTransactionId>
+          <Token>375814</Token>
+          <TransactionDate>2008-04-22 20:11:28.217</TransactionDate>
+          <TransactionType>1</TransactionType>
+        </TransactionReference4>
+      </TransactionsByTransactionIdResult>
+    </TransactionsByTransactionIdResponse>
+  </soap:Body>
+</soap:Envelope>
