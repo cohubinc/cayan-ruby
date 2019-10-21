@@ -31,10 +31,10 @@ GEM
       socksify
     json (2.1.0)
     method_source (0.9.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.11.3)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.4)
+      mini_portile2 (~> 2.4.0)
     nori (2.6.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
